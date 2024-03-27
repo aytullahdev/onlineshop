@@ -17,26 +17,23 @@ function App() {
   }
 
   return (<>
-    <h1>Product Title:{selectedProduct}</h1>
-    <h1>Product Price:{selectedPrice}</h1>
-    {products.map((singleProduct, index) => {
-      return (<div onClick={() => setProduct(singleProduct.title, singleProduct.price)} key={singleProduct.id}>
-        <img className="image" width="200px" src={singleProduct.image} alt="product" />
-        <span>{singleProduct.title}</span>
-        <span>{singleProduct.price}</span>
-      </div>);
-    })}
+    <div className="header">
+      <h1>Product Title:{selectedProduct}</h1>
+      <h1>Product Price:{selectedPrice}</h1>
+    </div>
+    <div className="cards">
+      {products.map((singleProduct, index) => {
+        return (<div className="card" onClick={() => setProduct(singleProduct.title, singleProduct.price)} key={singleProduct.id}>
+          <img className="card-image" width="200px" src={singleProduct.image} alt="product" />
+
+        </div>);
+      })}
+    </div>
   </>);
 
 }
 
-const Product = ({ imgLink, title, price }) => {
-  return <>
-    <img className="image" width="200px" src={imgLink} alt="product" />
-    <span>{title}</span>
-    <span>{price}</span>
-  </>
-}
+
 
 
 export default App
