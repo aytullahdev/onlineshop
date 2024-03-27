@@ -1,8 +1,13 @@
 import NewShop from "./NewShop.jsx";
+import Counter from "./Counter.jsx";
 
 function App() {
 
-  return (<NewShop />);
+  return (<>
+    <NewShop />
+    <Counter />
+
+  </>);
 
 }
 
