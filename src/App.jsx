@@ -4,17 +4,27 @@ import { useState } from "react";
 function App() {
   const [products, setProducts] = useState(data)
   const [selectedProduct, setSelectedProduct] = useState("");
+  const [selectedPrice, setSelectedPrice] = useState(0);
 
-  const setProduct = (title) => {
+
+
+  const setProduct = (title, price) => {
 
     setSelectedProduct(title);
+    setSelectedPrice(price);
+
 
   }
 
   return (<>
-
+    <h1>Product Title:{selectedProduct}</h1>
+    <h1>Product Price:{selectedPrice}</h1>
     {products.map((singleProduct, index) => {
-      return (<Product key={index} imgLink={singleProduct.image} title={singleProduct.title} price={singleProduct.price} />);
+      return (<div onClick={() => setProduct(singleProduct.title, singleProduct.price)} key={singleProduct.id}>
+        <img className="image" width="200px" src={singleProduct.image} alt="product" />
+        <span>{singleProduct.title}</span>
+        <span>{singleProduct.price}</span>
+      </div>);
     })}
   </>);
 
