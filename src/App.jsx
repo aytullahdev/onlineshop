@@ -3,18 +3,28 @@ import { useState } from "react";
 
 function App() {
   const [products, setProducts] = useState(data)
+  const [selectedProduct, setSelectedProduct] = useState("");
 
+  const setProduct = (title) => {
+
+    setSelectedProduct(title);
+
+  }
 
   return (<>
 
-
+    {products.map((singleProduct, index) => {
+      return (<Product key={index} imgLink={singleProduct.image} title={singleProduct.title} price={singleProduct.price} />);
+    })}
   </>);
 
 }
 
-const Product = ({ imgLink }) => {
+const Product = ({ imgLink, title, price }) => {
   return <>
-    <img width="200px" src={imgLink} alt="product" />
+    <img className="image" width="200px" src={imgLink} alt="product" />
+    <span>{title}</span>
+    <span>{price}</span>
   </>
 }
 
